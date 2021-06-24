@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-profiling",
+  "version": "1.0.0",
+  "description": "NodeJS profiling simulation",
+  "main": "index.js",
+  "author": "Prakasa <prakasa@devetek.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "ws": "node ws.js"
+  },
+  "dependencies": {
+    "fastify": "^3.18.0",
+    "fastify-static": "^4.2.2",
+    "fastify-websocket": "^3.2.0",
+    "inspector-api": "git+https://github.com/devetek/v8-inspector-api.git#storage-fs-custom-dir",
+    "reconnecting-websocket": "^4.4.0",
+    "ws": "^7.5.0"
+  }
+}
