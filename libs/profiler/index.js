@@ -44,16 +44,3 @@ rws.onclose = (event) => {
 rws.close = (code, reason) => {
   console.info("[close]", code, reason);
 };
-
-// rws.on("message", (message) => {
-
-// });
-
-// rws.on("error", function error(error) {
-//   console.log("ws connection error", error.message);
-//   // Do retry connection
-// });
-
-// rws.on("close", function close() {
-//   console.log("disconnected");
-// });
