@@ -12,7 +12,7 @@ const options = {
 const rws = new ReconnectingWebSocket("ws://localhost:3001/ws", [], options);
 
 rws.onopen = () => {
-  console.log("ws connection open!");
+  console.info("ws connection open!");
 };
 
 rws.onmessage = (message) => {
@@ -23,7 +23,6 @@ rws.onmessage = (message) => {
     console.info("[onmessage]", "Cpu profile started...");
   } else if (message.data === "stop_cpu_profiling") {
     inspector.profiler.stop();
-    console.log(inspector.profiler);
     console.info("[onmessage]", "Cpu profile stopped...");
   }
   console.info("[onmessage]", message.data);
