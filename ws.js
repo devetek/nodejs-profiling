@@ -66,7 +66,7 @@ app.all("/*", (_request, reply) => {
   reply
     .code(404)
     .header("Access-Control-Allow-Origin", "*")
-    .send({ message: "failed", data: null });
+    .sendFile("404.html");
 });
 
 app.listen(PORT, (err) => {

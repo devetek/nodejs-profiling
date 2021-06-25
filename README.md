@@ -16,4 +16,4 @@ Commands:
 - `yarn start` or `npm run start`
 - `yarn ws` or `npm run ws`
 
-After running 2 commands above service will runninng in port 3000 and profiling-dashboard will running in port 3001. Open [UI Dashboard](http://localhost:3001/), to check ws conection, test send message and start/stop profiling. When stop triggered, profiling result will saved in the project root directory.
+After running 2 commands above service will runninng in port 3000 and profiling-dashboard will running in port 3001. Open [UI Dashboard](http://localhost:3001/), to check ws conection, test send message and start/stop profiling. When stop triggered, profiling result will saved in the `./profile-result` directory.
