@@ -2,8 +2,8 @@
   const messages = document.querySelector("#messages");
   const wsButton = document.querySelector("#wsButton");
   const wsSendButton = document.querySelector("#wsSendButton");
-  // const logout = document.querySelector("#logout");
-  // const login = document.querySelector("#login");
+  const start = document.querySelector("#start-profile");
+  const stop = document.querySelector("#stop-profile");
 
   function showMessage(message) {
     messages.textContent += `\n${message}`;
@@ -16,23 +16,29 @@
       : Promise.reject(new Error("Unexpected response"));
   }
 
-  // login.onclick = function () {
-  //   fetch("/login", { method: "POST", credentials: "same-origin" })
-  //     .then(handleResponse)
-  //     .then(showMessage)
-  //     .catch(function (err) {
-  //       showMessage(err.message);
-  //     });
-  // };
+  start.onclick = function () {
+    fetch("http://localhost:3001/start", {
+      method: "GET",
+      credentials: "same-origin",
+    })
+      .then(handleResponse)
+      .then(showMessage)
+      .catch(function (err) {
+        showMessage(err.message);
+      });
+  };
 
-  // logout.onclick = function () {
-  //   fetch("/logout", { method: "DELETE", credentials: "same-origin" })
-  //     .then(handleResponse)
-  //     .then(showMessage)
-  //     .catch(function (err) {
-  //       showMessage(err.message);
-  //     });
-  // };
+  stop.onclick = function () {
+    fetch("http://localhost:3001/stop", {
+      method: "GET",
+      credentials: "same-origin",
+    })
+      .then(handleResponse)
+      .then(showMessage)
+      .catch(function (err) {
+        showMessage(err.message);
+      });
+  };
 
   let ws;
 
@@ -42,7 +48,7 @@
       ws.close();
     }
 
-    ws = new WebSocket('ws://localhost:3001/ws');
+    ws = new WebSocket("ws://localhost:3001/ws");
     ws.onerror = function () {
       showMessage("WebSocket error");
     };
@@ -50,8 +56,8 @@
       showMessage("WebSocket connection established");
     };
     ws.onmessage = function (message) {
-        console.log(message);
-    }
+      showMessage("Server broadcast message " + message.data);
+    };
 
     ws.onclose = function () {
       showMessage("WebSocket connection closed");

@@ -40,6 +40,6 @@ rws.onclose = (event) => {
   console.info("[onclose]", event.code, event.reason);
 };
 
-rws.close = (code, reason) => {
-  console.info("[close]", code, reason);
-};
+// rws.close = (code, reason) => {
+//   console.info("[close]", code, reason);
+// };

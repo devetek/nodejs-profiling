@@ -2,21 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Express session demo</title>
+    <title>Web UI - Remote Profiling</title>
   </head>
   <body>
     <h1>Choose an action.</h1>
-    <!-- <button id="login" type="button" title="Simulate login">
-      Simulate login
-    </button>
-    <button id="logout" type="button" title="Simulate logout">
-      Simulate logout
-    </button> -->
     <button id="wsButton" type="button" title="Open WebSocket connection">
-      Open WebSocket connection
+      Test WebSocket connection
     </button>
     <button id="wsSendButton" type="button" title="Send WebSocket message">
       Send WebSocket message
+    </button>
+    <button id="start-profile" type="button" title="Simulate login">
+      Start Profiling
+    </button>
+    <button id="stop-profile" type="button" title="Simulate logout">
+      Stop Profiling
     </button>
     <pre id="messages" style="height: 400px; overflow: scroll"></pre>
     <script src="public/app.js"></script>

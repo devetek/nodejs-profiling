@@ -1,9 +1,14 @@
 const fastify = require("fastify");
 const WebSocket = require("ws");
-const app = fastify();
+const path = require("path");
 
+const app = fastify();
 const PORT = 3001;
 
+app.register(require("fastify-static"), {
+  root: path.join(__dirname, "public"),
+  prefix: "/public/", // optional: default '/'
+});
 app.register(require("fastify-websocket"), {
   options: { maxPayload: 1048576 },
 });
@@ -31,7 +36,10 @@ app.get("/start", (_req, res) => {
     }
   });
 
-  res.status(200).send("Cpu profling started ...");
+  res
+    .status(200)
+    .header("Access-Control-Allow-Origin", "*")
+    .send({ message: "success", data: "CPU profling started ..." });
 });
 
 app.get("/stop", (_req, res) => {
@@ -41,12 +49,24 @@ app.get("/stop", (_req, res) => {
     }
   });
 
-  res.status(200).send("Cpu profling stopped ...");
+  res
+    .status(200)
+    .header("Access-Control-Allow-Origin", "*")
+    .send({ message: "success", data: "CPU profling stopped ..." });
+});
+
+
+// UI  Dashboard
+app.get("/", function (_req, reply) {
+  return reply.sendFile("index.html"); // serving path.join(__dirname, 'public', 'index.html') directly
 });
 
 // 404
 app.all("/*", (_request, reply) => {
-  reply.code(404).send({ msg: "404 not found", data: null });
+  reply
+    .code(404)
+    .header("Access-Control-Allow-Origin", "*")
+    .send({ message: "failed", data: null });
 });
 
 app.listen(PORT, (err) => {
